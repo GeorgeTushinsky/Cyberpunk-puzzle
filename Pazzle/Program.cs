@@ -19,29 +19,5 @@ namespace Pazzle
             CPPuzzle puzzle = new CPPuzzle(sampleArray, answerArray);
             puzzle.RunPuzzle();
         }
-
-        public static void PrintPuzzleMatrix(string[][] sampleArray, int[,] answerSequence)
-        {
-            int answerIndex = 0;
-            for (int i = 0; i < sampleArray.Length; i++)
-            {
-                Console.Write("[ ");
-                for (int j = 0; j < sampleArray[0].Length; j++)
-                {
-                    if (answerIndex < answerSequence.GetLength(0) && i == answerSequence[answerIndex, 0] && j == answerSequence[answerIndex, 1])
-                    {
-                        answerIndex++;
-                        Console.ForegroundColor = ConsoleColor.Blue;
-                        Console.Write(sampleArray[i][j]);
-                        Console.ForegroundColor = ConsoleColor.White;
-                    }
-                    else Console.Write(sampleArray[i][j]);
-
-                    if (j < sampleArray[0].Length - 1) Console.Write(", ");
-                }
-                Console.WriteLine(" ]");
-            }
-            Console.WriteLine();
-        }
     }
 }
