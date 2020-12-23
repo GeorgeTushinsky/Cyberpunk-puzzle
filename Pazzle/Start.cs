@@ -3,7 +3,7 @@ using Puzzle;
 
 namespace Pazzle
 {
-    class Program
+    class Start
     {
         static void Main(string[] args)
         {

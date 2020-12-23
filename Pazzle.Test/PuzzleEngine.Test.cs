@@ -42,7 +42,7 @@ namespace Pazzle.Test
 
             puzzle.Select(0, 0);
 
-            Assert.AreEqual(answer, puzzle.GetCurrentAnswerSequence().JoinArray(", "));
+            Assert.AreEqual(answer, puzzle.Choosen.JoinArray(", "));
 
         }
 
@@ -68,7 +68,7 @@ namespace Pazzle.Test
                 puzzle.Select(answerSequence[i, 0], answerSequence[i, 1]);
             }
 
-            Assert.AreEqual(answer, puzzle.GetCurrentAnswerSequence().JoinArray(", "));
+            Assert.AreEqual(answer, puzzle.Choosen.JoinArray(", "));
         }  
 
         [TestMethod]
