@@ -88,5 +88,19 @@ namespace Pazzle.Test
 
             Assert.AreEqual(2, selectionTimes);
         }
+
+        [TestMethod]
+        [ExpectedException(typeof(WrongValueChoosenException))]
+        public void SamePositionChoosenTwiceException()
+        {
+            PuzzleEngine puzzle = new PuzzleEngine(sampleArray, new string[] { "1C", "55", "55", "1C" });
+
+            int[,] answerSequence = new int[,] { { 0, 0 }, { 2, 0 }, { 2, 0 } };
+
+            for (int i = 0; i < answerSequence.GetLength(0); i++)
+            {
+                puzzle.Select(answerSequence[i, 0], answerSequence[i, 1]);
+            }
+        }
     }
 }
