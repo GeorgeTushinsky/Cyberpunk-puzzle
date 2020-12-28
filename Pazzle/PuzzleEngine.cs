@@ -26,6 +26,7 @@ namespace Puzzle
         {
             if (row >= PuzzleMatrix.Length || index >= PuzzleMatrix[0].Length) throw new WrongValueChoosenException("Wrong row or index value of matrix was choosen!");
 
+            //TODO: check if same value has been chosen twice
             string answerValue = AnswerSeq[Choosen.Count];
             string choosenValue = PuzzleMatrix[row][index];
 
