@@ -10,46 +10,35 @@ namespace Puzzle
     public class PuzzleEngine
     {
         public string[][] PuzzleMatrix { get; private set; }
-        private int _currentLine;
-        private Direction _direction;
-        private List<string> _choosen;
-        private string[] _answerSequence;
+        private int CurrentLine { get; set; }
+        private Direction Direction { get; set; }
+        public List<string> Choosen { get; private set; }
+        private string[] AnswerSeq { get; set; }
         public PuzzleEngine(string[][] puzzleMatrix, string[] answerSequence)
         {
             PuzzleMatrix = puzzleMatrix;
-            _currentLine = 0;
-            _direction = Direction.Horizontal;
-            _answerSequence = answerSequence;
-            _choosen = new List<string>();
+            CurrentLine = 0;
+            Direction = Direction.Horizontal;
+            AnswerSeq = answerSequence;
+            Choosen = new List<string>();
         }
         public void Select(int row, int index)
         {
             if (row >= PuzzleMatrix.Length || index >= PuzzleMatrix[0].Length) throw new WrongValueChoosenException("Wrong row or index value of matrix was choosen!");
 
-            string answerValue = _answerSequence[_choosen.Count];
+            string answerValue = AnswerSeq[Choosen.Count];
             string choosenValue = PuzzleMatrix[row][index];
 
             if (!answerValue.Equals(choosenValue)) throw new WrongValueChoosenException("Choosen value doesn't equals to next value in answer sequence!");
-
-            if (_direction == Direction.Horizontal && row == _currentLine)
-            {
-                ChangeState(index, Direction.Vertical, choosenValue);
-            }
-            else if (_direction == Direction.Vertical && index == _currentLine)
-            {
-                ChangeState(row, Direction.Horizontal, choosenValue);
-            }
+            if (Direction == Direction.Horizontal && row == CurrentLine) ChangeState(index, Direction.Vertical, choosenValue);
+            else if (Direction == Direction.Vertical && index == CurrentLine) ChangeState(row, Direction.Horizontal, choosenValue);
             else throw new WrongValueChoosenException("Wrong row or index value of matrix was choosen!");
         }
         private void ChangeState(int line, Direction direction, string value)
         {
-            _choosen.Add(value);
-            _currentLine = line;
-            _direction = direction;
-        }
-        public List<string> GetCurrentAnswerSequence()
-        {
-            return _choosen;
+            Choosen.Add(value);
+            CurrentLine = line;
+            Direction = direction;
         }
     }
 }

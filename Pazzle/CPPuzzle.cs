@@ -32,7 +32,7 @@ namespace Puzzle
                 _selectedIndices.Add(new int[] { input[0], input[1] });
                 _selectionCount++;
 
-                if (_answerSeq.SequenceEqual(_puzzleEngine.GetCurrentAnswerSequence()))
+                if (_answerSeq.SequenceEqual(_puzzleEngine.Choosen))
                 {
                     Console.WriteLine("You win!");
                 }
